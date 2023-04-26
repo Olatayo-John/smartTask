@@ -1,0 +1,17 @@
+.userImg{
+    text-align: center;
+}
+.userImg img{
+    margin:10px 0;
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 50%;
+}
+.userDetails{
+    padding:0 14px
+}
+.userDetails h6{
+    padding: 7px 0;
+    display: flex;
+    justify-content: space-between;
+}

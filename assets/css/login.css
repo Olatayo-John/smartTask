@@ -1,0 +1,28 @@
+body{
+	background-image: url('../../assets/images/common/11.jpg') !important;
+	/* background-repeat:no-repeat; */
+	background-size:cover !important;
+}
+#loginWrapper{
+	padding: 130px 0 100px 0;
+}
+.tabLogo{
+	text-align: center;
+	margin-top: 14px;
+}
+.tabLogo img{
+	max-width: 50px;
+	max-height: 50px;
+}
+.tabs {
+	display: flex;
+	padding-bottom: 21px;
+}
+.tabs button {
+	color: #263238;
+	/* border-bottom: 1px solid #263238; */
+	font-weight: 500;
+}
+.btnGroup{
+	padding:21px 0;
+}
