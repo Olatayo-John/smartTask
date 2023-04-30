@@ -24,7 +24,7 @@
 
 				<div class="g-recaptcha form-group" data-sitekey="<?php echo $this->st->captcha_site_key ?>"></div>
 				<div class="subbtngrp text-center">
-					<button class="btn text-light btn-block cnt_submit" style="background:#263238">Submit</button>
+					<button class="btn text-light btn-block cnt_submit" style="background:#004d40">Submit</button>
 				</div>
 			</form>
 		</div>

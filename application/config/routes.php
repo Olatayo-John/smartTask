@@ -53,39 +53,56 @@ defined('BASEPATH') or exit('No direct script access allowed');
 //common
 $route['default_controller'] = 'pages';
 $route['/'] = 'pages';
-
-$route['home'] = 'pages/index';
-$route['account'] = 'pages/account';
-$route['dashboard'] = 'dashboard';
-
 $route['logout'] = 'pages/logout';
 
 
+//
+//dashboard
+$route['dashboard'] = 'dashboard';
+//
 
+
+
+//
 //admin
 $route['adminlogin'] = 'admin/login';
-$route['logs'] = 'admin/logs';
-$route['clear-activity'] = 'admin/clear_activityLogs';
-$route['clear-feedbacks'] = 'admin/clear_feedbackLogs';
-
-
-
+//logs
+$route['logs'] = 'logs/index';
+// $route['activity-logs'] = 'logs/activityLogs';
+// $route['feedback-logs'] = 'logs/feedbackLogs';
+$route['clear-activity'] = 'logs/clear_activityLogs';
+$route['clear-feedbacks'] = 'logs/clear_feedbackLogs';
 //settings
 $route['settings'] = 'settings/index';
 $route['save-settings'] = 'settings/save';
 $route['reset-settings'] = 'settings/reset';
+//projects
+$route['project']='project/index';
+$route['add-project']='project/add';
+$route['project-categories']='project/categories';
+$route['project-categories/(:num)']='project/categories/$1';
+$route['delete-project-category']='project/delete_category';
+$route['project-activities']='project/activities';
+$route['project-activities/(:num)']='project/activities/$1';
+$route['delete-project-activity']='project/delete_activity';
+//
 
 
 
+//
 //user
 $route['userlogin'] = 'user/login';
+//
 
 
 
 //pages
+$route['home'] = 'pages/index';
+$route['account'] = 'pages/account';
 $route['emailverify/(:any)'] = 'pages/emailverify/$1';
 $route['verifyemail/(:any)'] = 'pages/emailverify/$1';
 $route['support'] = 'pages/support';
+//
 
 
 

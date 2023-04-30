@@ -15,7 +15,7 @@
 		</div>
 
 		<div class="form-group verifybtndiv">
-			<button class="btn btn-block text-light verifycodebtn" type="submit" style="background:#263238">Verify</button>
+			<button class="btn btn-block text-light verifycodebtn" type="submit" style="background:#004d40">Verify</button>
 		</div>
 
 		<div class="text-right font-weight-bolder rsendcodediv">

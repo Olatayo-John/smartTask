@@ -58,7 +58,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light fixed-top p-0">
 			<!-- <?php print_r($_SESSION) ?> -->
 
-			<button class="btn menubtn" onclick="closenav()">&#9776;</button>
+			<button class="btn menubtn" onclick="opennav()">&#9776;</button>
 
 			<h5 class="mr-auto site_name"><?php echo $this->st->site_name ?></h5>
 
@@ -73,14 +73,15 @@
 			<div class="logoimg mr-3">
 				<img src="<?php echo $hLogo ?>" alt="" class="navbar-label">
 			</div>
-			
+
 			<div class="side-nav" id="side-nav">
 				<?php $url = $this->session->userdata('url') ?>
+				<?php $suburl = $this->session->userdata('suburl') ?>
 				<ul>
 					<?php if (!$this->session->userdata('logged_in')) : ?>
 						<!-- home -->
 						<li class="nav-item">
-							<a href="<?php echo base_url('home') ?>" class="nav-link" style="<?php echo ($url == 'home') ? 'background:white;color:#263238' : '' ?>">
+							<a href="<?php echo base_url('home') ?>" class="nav-link" style="<?php echo ($url == 'home') ? 'background:white;color:#004d40' : '' ?>">
 								<i class="fas fa-home"></i><b>Home</b>
 							</a>
 						</li>
@@ -90,39 +91,70 @@
 
 						<!-- dashboard -->
 						<li class="nav-item">
-							<a href="<?php echo base_url('dashboard') ?>" class="nav-link" style="<?php echo ($url == 'dashboard') ? 'background:white;color:#263238' : '' ?>">
+							<a href="<?php echo base_url('dashboard') ?>" class="nav-link" style="<?php echo ($url == 'dashboard') ? 'background:white;color:#004d40' : '' ?>">
 								<i class="fas fa-television"></i><b>Dashboard</b>
+							</a>
+						</li>
+
+						<?php if ($this->session->userdata('logged_in') && $this->session->userdata('role') == "Admin") : ?>
+							<!-- project -->
+							<li class="nav-item">
+								<a href="javascript:void(0)" menuName="project" class="nav-link" style="<?php echo ($url == 'project') ? 'background:white;color:#004d40' : '' ?>">
+									<i class="fas fa-list-check"></i><b>Project</b>
+								</a>
+
+								<ul class="submenu <?php echo (($url == 'project') && ($suburl)) ? 'submenu-open' : 'submenu-close'; ?>" menuName="project">
+									<a href="<?php echo base_url('project') ?>" class="sub-nav-link" style="<?php echo ($suburl == 'index') ? 'background:white;color:#004d40' : '' ?>">
+										<i class="fa fa-angle-right pull-right"></i><b>Projects</b>
+									</a>
+									<a href="<?php echo base_url('add-project') ?>" class="sub-nav-link" style="<?php echo ($suburl == 'add-project') ? 'background:white;color:#004d40' : '' ?>">
+										<i class="fa fa-angle-right pull-right"></i><b>Add Project</b>
+									</a>
+									<a href="<?php echo base_url('project-categories') ?>" class="sub-nav-link" style="<?php echo ($suburl == 'project-categories') ? 'background:white;color:#004d40' : '' ?>">
+										<i class="fa fa-angle-right pull-right"></i><b>Project Categories</b>
+									</a>
+									<a href="<?php echo base_url('project-activities') ?>" class="sub-nav-link" style="<?php echo ($suburl == 'project-activities') ? 'background:white;color:#004d40' : '' ?>">
+										<i class="fa fa-angle-right pull-left"></i><b>Project Activities</b>
+									</a>
+								</ul>
+							</li>
+						<?php endif; ?>
+
+						<!-- my-projects -->
+						<li class="nav-item">
+							<a href="<?php echo base_url('my-projects') ?>" class="nav-link" style="<?php echo ($url == 'my-projects') ? 'background:white;color:#004d40' : '' ?>">
+								<i class="fas fa-task"></i><b>My Projects</b>
 							</a>
 						</li>
 
 						<!-- myAccount -->
 						<li class="nav-item">
-							<a href="<?php echo base_url('account') ?>" class="nav-link" style="<?php echo ($url == 'account') ? 'background:white;color:#263238' : '' ?>">
+							<a href="<?php echo base_url('account') ?>" class="nav-link" style="<?php echo ($url == 'account') ? 'background:white;color:#004d40' : '' ?>">
 								<i class="fas fa-user"></i><b>Profile</b>
 							</a>
 						</li>
-					<?php endif; ?>
 
-					<?php if ($this->session->userdata('logged_in') && $this->session->userdata('role') == "Admin") : ?>
+						<?php if ($this->session->userdata('logged_in') && $this->session->userdata('role') == "Admin") : ?>
 
-						<!-- actvity logs -->
-						<li class="nav-item">
-							<a href="<?php echo base_url('logs') ?>" class="nav-link" style="<?php echo ($url == 'logs') ? 'background:white;color:#263238' : '' ?>">
-								<i class="fas fa-clipboard-check"></i><b>Logs</b>
-							</a>
-						</li>
+							<!-- actvity logs -->
+							<li class="nav-item">
+								<a href="<?php echo base_url('logs') ?>" class="nav-link" style="<?php echo ($url == 'logs') ? 'background:white;color:#004d40' : '' ?>">
+									<i class="fas fa-clipboard-check"></i><b>Logs</b>
+								</a>
+							</li>
 
-						<!-- settings -->
-						<li class="nav-item">
-							<a href="<?php echo base_url('settings') ?>" class="nav-link" style="<?php echo ($url == 'settings') ? 'background:white;color:#263238' : '' ?>">
-								<i class="fa-solid fa-gear"></i><b>Settings</b>
-							</a>
-						</li>
+							<!-- settings -->
+							<li class="nav-item">
+								<a href="<?php echo base_url('settings') ?>" class="nav-link" style="<?php echo ($url == 'settings') ? 'background:white;color:#004d40' : '' ?>">
+									<i class="fa-solid fa-gear"></i><b>Settings</b>
+								</a>
+							</li>
+						<?php endif; ?>
 					<?php endif; ?>
 
 					<!-- support -->
 					<li class="nav-item">
-						<a href="<?php echo base_url('support') ?>" class="nav-link" style="<?php echo ($url == 'support') ? 'background:white;color:#263238' : '' ?>">
+						<a href="<?php echo base_url('support') ?>" class="nav-link" style="<?php echo ($url == 'support') ? 'background:white;color:#004d40' : '' ?>">
 							<i class="fas fa-question-circle"></i><b>Support</b>
 						</a>
 					</li>

@@ -1,18 +1,20 @@
-.g-recaptcha{
+.g-recaptcha {
 	overflow-y: hidden;
 	overflow-x: scroll;
 }
 
-.imagediv img{
+.imagediv img {
 	max-width: 200px;
 	max-height: 200px;
 }
-.info div i{
-	color: #263238;
+
+.info div i {
+	color: #004d40;
 	margin-right: 7px;
 }
-a{
-	color: #263238;
+
+a {
+	color: #004d40;
 }
 
 i.fab {
@@ -63,21 +65,25 @@ i.fa-linkedin:hover {
 	div.wrapper_second {
 		margin-top: 100px;
 	}
-}.g-recaptcha{
+}
+
+.g-recaptcha {
 	overflow-y: hidden;
 	overflow-x: scroll;
 }
 
-.imagediv img{
+.imagediv img {
 	max-width: 200px;
 	max-height: 200px;
 }
-.info div i{
-	color: #263238;
+
+.info div i {
+	color: #004d40;
 	margin-right: 7px;
 }
-a{
-	color: #263238;
+
+a {
+	color: #004d40;
 }
 
 i.fab {

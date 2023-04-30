@@ -7,14 +7,15 @@ class Settings extends Admin_Controller
 	{
 		$this->is_admin();
 
-		$this->setTabUrl($mod = 'settings');
+		$this->setTabUrl('url', 'settings');
+		$this->setTabUrl('suburl', '');
 
 		$data['title'] = "settings";
 
 		$data['settings'] = $this->Settingsmodel->get_settings();
 
 		$this->load->view('templates/header', $data);
-		$this->load->view('settings/index');
+		$this->load->view('admin/settings/index');
 		$this->load->view('templates/footer');
 	}
 
@@ -22,7 +23,8 @@ class Settings extends Admin_Controller
 	{
 		$this->is_admin();
 
-		$this->setTabUrl($mod = 'settings');
+		$this->setTabUrl('url', 'settings');
+		$this->setTabUrl('suburl', '');
 
 		$data['title'] = "settings";
 
@@ -192,7 +194,7 @@ class Settings extends Admin_Controller
 				$data['status'] = false;
 				$data['msg'] = 'Error resetting settings';
 			} else {
-				$log = "Settings Reset [ Username: " . $this->session->userdata('uname'). " ]";
+				$log = "Settings Reset [ Username: " . $this->session->userdata('uname') . " ]";
 				$this->log_act($log);
 
 				$this->setFlashMsg('success', 'Settings Reset');
@@ -204,5 +206,4 @@ class Settings extends Admin_Controller
 		$data['token'] = $this->security->get_csrf_hash();
 		echo json_encode($data);
 	}
-
 }

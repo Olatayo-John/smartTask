@@ -6,11 +6,10 @@ class Pages extends Pages_Controller
     //home page
     public function index()
     {
-        $this->setTabUrl($mod = 'home');
+        $this->setTabUrl('url', 'home');
+        $this->setTabUrl('suburl', '');
 
         $data['title'] = "home";
-
-        $data['settings'] = $this->Settingsmodel->get_settings();
 
         if ($this->session->userdata('logged_in')) {
             redirect('dashboard');
@@ -25,24 +24,26 @@ class Pages extends Pages_Controller
     //profile
     public function account()
     {
-        $this->checklogin();
+        $this->is_logged_in();
 
-        $this->setTabUrl($mod = 'account');
+        $this->setTabUrl('url', 'account');
+        $this->setTabUrl('suburl', '');
 
         $data['title'] = "account";
 
         $data['user_info'] = $this->Pagesmodel->get_userinfo();
 
-        $this->load->view('templates/header',$data);
+        $this->load->view('templates/header', $data);
         $this->load->view('pages/account');
         $this->load->view('templates/footer');
     }
 
     public function account_edit()
     {
-        $this->checklogin();
+        $this->is_logged_in();
 
-        $this->setTabUrl($mod = 'account');
+        $this->setTabUrl('url', 'account');
+        $this->setTabUrl('suburl', '');
 
         $this->form_validation->set_rules('fname', 'First Name', 'trim|html_escape');
         $this->form_validation->set_rules('lname', 'Last Name', 'trim|html_escape');
@@ -77,7 +78,7 @@ class Pages extends Pages_Controller
 
     public function password_update()
     {
-        $this->checklogin();
+        $this->is_logged_in();
 
         $this->form_validation->set_rules('c_pwd', 'Current Password', 'required|trim');
         $this->form_validation->set_rules('n_pwd', 'New Password', 'required|trim|min_length[6]');
@@ -209,7 +210,8 @@ class Pages extends Pages_Controller
     //email verification after registration
     public function emailverify($key)
     {
-        $this->setTabUrl($mod = 'login');
+        $this->setTabUrl('url', 'login');
+        $this->setTabUrl('suburl', '');
 
         $data['title'] = "Email Verification";
 
@@ -308,7 +310,8 @@ class Pages extends Pages_Controller
     {
         $data['title'] = "support";
 
-        $this->setTabUrl($mod = 'support');
+        $this->setTabUrl('url', 'support');
+        $this->setTabUrl('suburl', '');
 
         $this->form_validation->set_rules('name', 'Full Name', 'required|trim|html_escape');
         $this->form_validation->set_rules('email', 'E-mail', 'required|trim|valid_email|html_escape');

@@ -8,16 +8,16 @@
 
 <style>
     .errorDiv {
-        box-shadow: 0 10px 15px #263238;
+        box-shadow: 0 10px 15px #004d40;
     }
 
     h1 {
-        color: #263238;
+        color: #004d40;
     }
 
     h1 {
         background-color: transparent;
-        border-bottom: 1px solid #263238;
+        border-bottom: 1px solid #004d40;
         font-size: 19px;
         font-weight: 500;
         margin: 0 0 14px 0;

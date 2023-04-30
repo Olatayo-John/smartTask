@@ -19,7 +19,8 @@ class User extends User_Controller
 			redirect('/');
 		}
 
-		$this->setTabUrl($mod = 'login');
+		$this->setTabUrl('url', 'login');
+		$this->setTabUrl('suburl', '');
 
 		$data['title'] = "login";
 
@@ -27,7 +28,7 @@ class User extends User_Controller
 		$this->form_validation->set_rules('userPwd', 'Password', 'required|trim|html_escape');
 
 		if ($this->form_validation->run() === FALSE) {
-			$this->load->view('templates/header',$data);
+			$this->load->view('templates/header', $data);
 			$this->load->view('user/login');
 			$this->load->view('templates/footer');
 		} else {
@@ -78,7 +79,4 @@ class User extends User_Controller
 			}
 		}
 	}
-
-
-	
 }

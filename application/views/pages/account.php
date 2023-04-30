@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/account.css'); ?>">
 
-<div class="wrapper">
-    <div class="container">
+<div class="wrapper-fluid">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-4">
                 <div class="userInfo bg-light-custom">
@@ -43,7 +43,6 @@
                     </div>
                 </div>
             </div>
-
 
             <div class="col-md-8">
                 <div class="tabLinkDiv bg-light-custom">

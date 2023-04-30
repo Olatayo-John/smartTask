@@ -18,7 +18,7 @@
 				</div>
 
 				<div class="tabs">
-					<button class="btn btn-block tablink" id="user" tabName="user">User Login</button>
+					<button class="btn btn-block" id="user" tabName="user">User Login</button>
 				</div>
 
 				<div class="tabDivs">

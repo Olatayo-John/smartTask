@@ -15,7 +15,8 @@ class MY_Controller extends CI_Controller
 
         // error_reporting(0);
 
-        $this->setTabUrl($mod = null);
+
+        $this->setTabUrl($u1 = null, $u2 = null);
         $this->st = $this->get_settings($s = null); //settings
         $this->df = $this->get_default_values(); //default values
         $this->curd = $this->get_role(); //current_user_role_details
@@ -54,9 +55,10 @@ class MY_Controller extends CI_Controller
     }
 
     //set tab_div
-    public function setTabUrl($mod)
+    public function setTabUrl($u1, $u2)
     {
-        $this->session->set_userdata('url', $mod); //set
+        // $this->session->set_userdata('url', $mod); //set
+        $this->session->set_userdata($u1, $u2); //set
     }
 
     //set session_flash-message
@@ -66,23 +68,37 @@ class MY_Controller extends CI_Controller
     }
 
     //checks if user is loggedIn before accessing any page/function via page refresh/on-load
-    public function checklogin()
+    public function is_logged_in()
     {
         if (!$this->session->userdata('logged_in')) {
             $this->setFlashMsg('error', lang('login_first'));
             redirect('logout');
         } else {
-            return true;
+            if ($this->session->userdata('role') === "Admin") {
+                return true;
+            }
+            if ($this->session->userdata('role') === "User") {
+                return true;
+            } else {
+                redirect('logout');
+            }
         }
     }
 
     //checks if user is loggedIn before accessing any page/function via ajax calls
-    public function ajax_checklogin()
+    public function ajax_is_logged_in()
     {
         if (!$this->session->userdata('logged_in')) {
             return false;
         } else {
-            return true;
+            if ($this->session->userdata('role') === "Admin") {
+                return true;
+            }
+            if ($this->session->userdata('role') === "User") {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 
@@ -117,14 +133,13 @@ class MY_Controller extends CI_Controller
 
 
 // class User_Controller extends MY_Controller
-class User_Controller extends MY_Controller
+class Pages_Controller extends MY_Controller
 {
     public function __construct()
     {
         parent::__construct();
 
-        $this->load->model('Settingsmodel');
-        $this->load->model('Usermodel');
+        $this->load->model('Pagesmodel');
     }
 }
 
@@ -137,6 +152,8 @@ class Admin_Controller extends MY_Controller
 
         $this->load->model('Settingsmodel');
         $this->load->model('Adminmodel');
+        $this->load->model('Projectmodel');
+        $this->load->model('Logsmodel');
     }
 
     //checks if user is loggedIn and is a companyAdmin before accessing any page/function
@@ -149,7 +166,7 @@ class Admin_Controller extends MY_Controller
         } else {
             if ($this->session->userdata('role') === "Admin") {
                 return true;
-            } else{
+            } else {
                 $this->setFlashMsg('error', lang('acc_denied'));
                 redirect($_SERVER['HTTP_REFERER']);
             }
@@ -163,7 +180,7 @@ class Admin_Controller extends MY_Controller
         } else {
             if ($this->session->userdata('role') === "Admin") {
                 return true;
-            } else{
+            } else {
                 return false;
             }
         }
@@ -171,14 +188,13 @@ class Admin_Controller extends MY_Controller
 }
 
 // class User_Controller extends MY_Controller
-class Pages_Controller extends MY_Controller
+class User_Controller extends MY_Controller
 {
     public function __construct()
     {
         parent::__construct();
 
-        $this->load->model('Settingsmodel');
-        $this->load->model('Pagesmodel');
+        $this->load->model('Usermodel');
     }
 }
 
@@ -188,7 +204,6 @@ class Dashboard_Controller extends MY_Controller
     {
         parent::__construct();
 
-        $this->load->model('Settingsmodel');
         // $this->load->model('Dashboardmodel');
     }
 }

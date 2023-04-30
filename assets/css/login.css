@@ -1,28 +1,34 @@
-body{
-	background-image: url('../../assets/images/common/11.jpg') !important;
+body {
+	background-image: url('../../assets/images/site/bg.jpg') !important;
 	/* background-repeat:no-repeat; */
-	background-size:cover !important;
+	background-size: cover !important;
 }
-#loginWrapper{
+
+#loginWrapper {
 	padding: 130px 0 100px 0;
 }
-.tabLogo{
+
+.tabLogo {
 	text-align: center;
 	margin-top: 14px;
 }
-.tabLogo img{
+
+.tabLogo img {
 	max-width: 50px;
 	max-height: 50px;
 }
+
 .tabs {
 	display: flex;
 	padding-bottom: 21px;
 }
+
 .tabs button {
-	color: #263238;
-	/* border-bottom: 1px solid #263238; */
+	color: #004d40;
+	/* border-bottom: 1px solid #004d40; */
 	font-weight: 500;
 }
-.btnGroup{
-	padding:21px 0;
+
+.btnGroup {
+	padding: 21px 0;
 }
